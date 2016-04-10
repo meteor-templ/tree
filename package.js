@@ -19,9 +19,12 @@ Package.onUse(function(api) {
 	api.use('matb33:collection-hooks@0.8.1');
 	api.use('dburles:collection-helpers@1.0.4');
 	api.use('templ:dimentum@0.0.3');
-	api.use('shuttler:graphs@0.0.15');
+	api.use('shuttler:graphs@0.0.16');
 	api.use('peerlibrary:blaze-components@0.18.0');
 	
 	api.addFiles('Tree.html', 'client');
 	api.addFiles('Tree.js', 'client');
+	api.addFiles('States.js', 'client');
+	
+	api.export('Tree', 'client');
 });

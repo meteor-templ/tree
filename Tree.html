@@ -1,11 +1,43 @@
 <template name="Tree.Cursor">
 	{{setContentBlock Template.contentBlock}}
-	{{#each cursor}}
-		{{> Tree.Document document=this contentBlock=contentBlock}}
-	{{/each}}
+	{{#momentum plugin=getMomentum}}
+		{{#unless state.isClosed}}
+			{{#momentum plugin=getMomentum}}
+				{{#each cursor}}
+					<div>
+						{{# Tree.Document document=this contentBlock=contentBlock}}
+							{{> contentBlock}}
+						{{/ Tree.Document}}
+					</div>
+				{{/each}}
+			{{/momentum}}
+		{{/unless}}
+	{{/momentum}}
 </template>
 
 <template name="Tree.Document">
-	{{setContentBlock Template.contentBlock}}
-	{{> contentBlock}}
+	{{> Template.contentBlock}}
+</template>
+
+<template name="Tree.Open">
+	{{> Template.contentBlock}}
+</template>
+
+<template name="Tree.Close">
+	{{> Template.contentBlock}}
+</template>
+
+<template name="Tree.Toggle">
+	{{#if state.isClosed}}
+		{{# Tree.Open}}
+			{{> Template.elseBlock}}
+		{{/ Tree.Open}}
+	{{else}}
+		{{# Tree.Close}}
+			{{> Template.contentBlock}}
+		{{/ Tree.Close}}
+	{{/if}}
+</template>
+
+<template name="Tree.State">
 </template>
