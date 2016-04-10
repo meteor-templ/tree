@@ -1,0 +1,11 @@
+<template name="Tree.Cursor">
+	{{setContentBlock Template.contentBlock}}
+	{{#each cursor}}
+		{{> Tree.Document document=this contentBlock=contentBlock}}
+	{{/each}}
+</template>
+
+<template name="Tree.Document">
+	{{setContentBlock Template.contentBlock}}
+	{{> contentBlock}}
+</template>
