@@ -21,10 +21,12 @@ Package.onUse(function(api) {
 	api.use('templ:dimentum@0.0.3');
 	api.use('shuttler:graphs@0.0.16');
 	api.use('peerlibrary:blaze-components@0.18.0');
+	api.use('peerlibrary:reactive-field@0.1.0');
+	api.use('templ:tools@0.0.0');
 	
 	api.addFiles('Tree.html', 'client');
 	api.addFiles('Tree.js', 'client');
 	api.addFiles('States.js', 'client');
 	
-	api.export('Tree', 'client');
+	api.export('Templ', 'client');
 });

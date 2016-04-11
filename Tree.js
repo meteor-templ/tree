@@ -1,31 +1,38 @@
-Tree = {};
+Templ.Tree = {};
 
-Tree._momentum = 'fade';
+Templ.Tree._momentum = 'fade';
 
-Tree.Item = class extends BlazeComponent {
+Templ.Tree.Item = class extends BlazeComponent {
 	setContentBlock(contentBlock) {
-		if (contentBlock)
-			this.contentBlock = contentBlock;
-		else if (this.currentData().contentBlock)
+		if (contentBlock) {
+			if (typeof(contentBlock) == 'string') {
+				this.contentBlock = Template[contentBlock];
+			} else {
+				this.contentBlock = contentBlock;
+			}
+		} else if (this.currentData().contentBlock)
 			this.contentBlock = this.currentData().contentBlock;
+	};
+	setTheme(theme) {
+		if (theme)
+			if (typeof(theme) == 'string') {
+				this.theme = Template[theme];
+			} else {
+				this.theme = theme;
+			}
+		else if (this.currentData().theme)
+			this.theme = this.currentData().theme;
+		else
+			this.theme = Template['Tree.Theme'];
 	};
 }
 
-Tree.Cursor = class extends Tree.Item {
-	getMomentum() {
-		if (this.currentData().momentum) return this.currentData().momentum;
-		else return Tree._momentum;
-	}
+Templ.Tree.Cursor = class extends Templ.Tree.Item {
 }
 
-Tree.Cursor.register('Tree.Cursor');
+Templ.Tree.Cursor.register('Tree.Cursor');
 
-Tree.Document = class extends Tree.Item {
-}
-
-Tree.Document.register('Tree.Document');
-
-Tree.Open = class extends BlazeComponent {
+Templ.Tree.Open = class extends BlazeComponent {
 	events() {
 		return super.events().concat({
 			'click': () => {
@@ -36,9 +43,9 @@ Tree.Open = class extends BlazeComponent {
 	}
 }
 
-Tree.Open.register('Tree.Open');
+Templ.Tree.Open.register('Tree.Open');
 
-Tree.Close = class extends BlazeComponent {
+Templ.Tree.Close = class extends BlazeComponent {
 	events() {
 		return super.events().concat({
 			'click': () => {
@@ -49,14 +56,14 @@ Tree.Close = class extends BlazeComponent {
 	}
 }
 
-Tree.Close.register('Tree.Close');
+Templ.Tree.Close.register('Tree.Close');
 
-Tree.Toggle = class extends BlazeComponent {
+Templ.Tree.Toggle = class extends BlazeComponent {
 }
 
-Tree.Toggle.register('Tree.Toggle');
+Templ.Tree.Toggle.register('Tree.Toggle');
 
-Tree.State = class extends BlazeComponent {
+Templ.Tree.State = class extends BlazeComponent {
 	onCreated() {
 		super.onCreated();
 		var States = this.currentData().States;
@@ -66,4 +73,4 @@ Tree.State = class extends BlazeComponent {
 	};
 }
 
-Tree.State.register('Tree.State');
+Templ.Tree.State.register('Tree.State');

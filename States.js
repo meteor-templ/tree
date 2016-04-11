@@ -1,4 +1,4 @@
-// (options? Options)
+// (options?: Options)
 Mongo.Collection.prototype.attachTemplTreeStatesGraph = function(options) {
 	var options = lodash.defaults(typeof(options) === 'object'?options:{}, {
 		schema: true,
@@ -51,5 +51,5 @@ Mongo.Collection.prototype.attachTemplTreeStatesGraph.insertState = function(tar
 	}
 };
 
-Tree.States = new Mongo.Collection(null, { ref: 'templ:tree.states' });
-Tree.States.attachTemplTreeStatesGraph();
+Templ.Tree.States = new Mongo.Collection(null, { ref: 'templ:tree.states' });
+Templ.Tree.States.attachTemplTreeStatesGraph();
