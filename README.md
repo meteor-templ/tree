@@ -2,7 +2,7 @@
 
 [Examples](http://meteor-templ.herokuapp.com/tree) [GitHub](https://github.com/meteor-templ/tree) [Atmosphere.js](atmospherejs.com/templ/tree)
 
-Easy generation of tree structures.
+Realy fully customizable, and reactive trees for trees of directories, trees of comments, trees of any custom data.
 
 ## Install
 
