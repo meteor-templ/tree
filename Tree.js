@@ -4,25 +4,27 @@ Templ.Tree._momentum = 'fade';
 
 Templ.Tree.Item = class extends BlazeComponent {
 	setContentBlock(contentBlock) {
+		if (this.currentData().contentBlock)
+			var contentBlock = this.currentData().contentBlock;
 		if (contentBlock) {
 			if (typeof(contentBlock) == 'string') {
 				this.contentBlock = Template[contentBlock];
 			} else {
 				this.contentBlock = contentBlock;
 			}
-		} else if (this.currentData().contentBlock)
-			this.contentBlock = this.currentData().contentBlock;
+		}
 	};
 	setTheme(theme) {
-		if (theme)
+		if (this.currentData().theme)
+			var theme = this.currentData().theme;
+		if (theme) {
 			if (typeof(theme) == 'string') {
 				this.theme = Template[theme];
 			} else {
 				this.theme = theme;
 			}
-		else if (this.currentData().theme)
-			this.theme = this.currentData().theme;
-		else
+		}
+		if (!this.theme)
 			this.theme = Template['Tree.Theme'];
 	};
 }
