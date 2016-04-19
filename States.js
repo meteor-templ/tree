@@ -45,9 +45,9 @@ Mongo.Collection.prototype.attachTemplTreeStatesGraph.isClosed = function(target
 	else return false;
 };
 
-Mongo.Collection.prototype.attachTemplTreeStatesGraph.insertState = function(target) {
+Mongo.Collection.prototype.attachTemplTreeStatesGraph.insertState = function(target, closed) {
 	if (target) {
-		return this.findOne(this.insert({ _target: target.Ref() }));
+		return this.findOne(this.insert({ _target: target.Ref(), closed: typeof(closed) === 'boolean'?closed:undefined }));
 	}
 };
 

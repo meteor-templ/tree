@@ -68,9 +68,11 @@ Templ.Tree.Toggle.register('Tree.Toggle');
 Templ.Tree.State = class extends BlazeComponent {
 	onCreated() {
 		super.onCreated();
-		var States = this.currentData().States;
-		if (States) {
-			this.state = States.insertState(this.currentData().document);
+		if (this.currentData()) {
+			var States = this.currentData().States;
+			if (States) {
+				this.state = States.insertState(this.currentData().document, this.currentData().closed);
+			}
 		}
 	};
 }

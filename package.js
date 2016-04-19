@@ -1,6 +1,6 @@
 Package.describe({
 	name: 'templ:tree',
-	version: '0.0.2',
+	version: '0.0.3',
 	summary: 'Realy fully customizable, and reactive trees of directories, comments and any other...',
 	git: 'https://github.com/meteor-templ/tree',
 	documentation: 'README.md'

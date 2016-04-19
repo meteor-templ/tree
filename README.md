@@ -87,9 +87,11 @@ It allows you to easily create a button of state change.
 ```
 
 ### Template['Tree.State']
-> {{> Tree.State document=Document States=Mongo.Collection}}
+> {{> Tree.State document=Document States=Mongo.Collection closed?=Boolean}}
 
 It initializes the state for the displayed document.
+
+You can set the initial `closed` state for this document.
 
 ### Templ.Tree.States
 > Mongo.Collection
@@ -124,3 +126,6 @@ collection.insertState = collection.attachTemplTreeStatesGraph.insertState;
 ```
 
 ## Versions
+
+### 0.0.3
+* Support for initial state (#1)
